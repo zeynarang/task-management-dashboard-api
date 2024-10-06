@@ -25,6 +25,7 @@ app.post("/api/auth/signup", registerUser);
 app.get("/api/auth/login", loginRouter);
 app.get("/api/user/:userId", getUserDetails);
 app.get("/api/projects", getProjects);
+app.get("/api/project/:projectId", getProject);
 
 // Start the server
 app.listen(PORT, () => {
