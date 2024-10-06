@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 import express from "express";
 import createProject from "./handler/createProject.js";
 import createTask from "./handler/createTask.js";
-import getProjects from "./handler/getProject.js";
+import getProjects from "./handler/getProjects.js";
+import getProject from "./handler/getProject.js";
 import getTasks from "./handler/getTask.js";
 import getUserDetails from "./handler/getUser.js";
 import loginRouter from "./handler/loginUser.js";
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 app.post("/api/auth/signup", registerUser);
 app.get("/api/auth/login", loginRouter);
 app.get("/api/user/:userId", getUserDetails);
+app.get("/api/projects", getProjects);
 
 // Start the server
 app.listen(PORT, () => {
