@@ -28,6 +28,7 @@ app.get("/api/projects", getProjects);
 app.get("/api/project/:projectId", getProject);
 app.post("/api/projects", createProject);
 app.get("/api/tasks", getTasks);
+app.post("/api/tasks", createTask);
 
 // Start the server
 app.listen(PORT, () => {
