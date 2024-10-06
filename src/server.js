@@ -1,11 +1,15 @@
-import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import registerUser from "./handler/registerUser.js";
+import express from "express";
+import createProject from "./handler/createProject.js";
+import createTask from "./handler/createTask.js";
+import getProjects from "./handler/getProjects.js";
+import getProject from "./handler/getProject.js";
+import getTasks from "./handler/getTask.js";
+import getUserDetails from "./handler/getUser.js";
 import loginRouter from "./handler/loginUser.js";
-import createProjectRouter from "./handler/createProject.js";
-import getProjectsRouter from "./handler/getProject.js";
+import registerUser from "./handler/registerUser.js";
 
 dotenv.config();
 
@@ -19,8 +23,12 @@ app.use(bodyParser.json());
 // Use the routers
 app.post("/api/auth/signup", registerUser);
 app.get("/api/auth/login", loginRouter);
-app.post("/api/projects", createProjectRouter);
-app.get("/api/projects", getProjectsRouter);
+app.get("/api/user/:userId", getUserDetails);
+app.get("/api/projects", getProjects);
+app.get("/api/project/:projectId", getProject);
+app.post("/api/projects", createProject);
+app.get("/api/tasks", getTasks);
+app.post("/api/tasks", createTask);
 
 // Start the server
 app.listen(PORT, () => {
