@@ -10,6 +10,7 @@ import getTasks from "./handler/getTask.js";
 import getUserDetails from "./handler/getUser.js";
 import loginRouter from "./handler/loginUser.js";
 import registerUser from "./handler/registerUser.js";
+import createSection from "./handler/createSection.js";
 
 dotenv.config();
 
@@ -29,7 +30,7 @@ app.get("/api/project/:projectId", getProject);
 app.post("/api/projects", createProject);
 app.get("/api/tasks", getTasks);
 app.post("/api/tasks", createTask);
-
+app.post("/sections", createSection);
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
