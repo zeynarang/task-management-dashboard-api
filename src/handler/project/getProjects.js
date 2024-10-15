@@ -4,7 +4,6 @@ import pool from "../../client/client.js";
 const getProjects = async (req, res) => {
   try {
     const user = jwtDecode(req.headers.authorization);
-    console.log("user", user);
     const projectsResult = await pool.query(
       `
       SELECT p.*,

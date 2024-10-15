@@ -35,3 +35,26 @@ CREATE TABLE tasks (
     end_date DATE,
     project_id INT REFERENCES projects(project_id) ON DELETE CASCADE  -- Foreign key linked to users table
 );
+
+
+
+CREATE TABLE project_sections_mapping (
+    project_id INT NOT NULL,
+    section_id INT NOT NULL,
+    PRIMARY KEY (project_id, section_id),
+    CONSTRAINT fk_project
+        FOREIGN KEY (project_id)
+        REFERENCES projects (project_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_section
+        FOREIGN KEY (section_id)
+        REFERENCES sections (section_id)
+        ON DELETE CASCADE
+);
+
+ALTER TABLE tasks
+ADD COLUMN section_id INT;
+
+ALTER TABLE tasks
+ADD CONSTRAINT fk_section
+FOREIGN KEY (section_id) REFERENCES sections(section_id) ON DELETE CASCADE;
